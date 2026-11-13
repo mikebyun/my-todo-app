@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <!-- 한글이 깨지지 않도록 문자 인코딩 지정 -->
+  <meta charset="UTF-8">
+  <!-- 모바일 화면 너비에 맞춰 표시 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- 접속하자마자 자기소개 페이지로 이동 (스크립트가 꺼져 있어도 동작) -->
+  <meta http-equiv="refresh" content="0; url=hello-world/profile/">
+  <title>자기소개로 이동 중</title>
+  <!-- 뒤로 가기 시 이 중간 페이지가 남지 않도록 replace로 이동 -->
+  <script>location.replace('hello-world/profile/');</script>
+</head>
+<body>
+  <!-- 자동 이동이 안 될 때를 위한 안내 링크 -->
+  <p>자기소개 페이지로 이동합니다. 이동하지 않으면 <a href="hello-world/profile/">여기</a>를 눌러 주세요.</p>
+</body>
+</html>
