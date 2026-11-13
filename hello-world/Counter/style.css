@@ -1,0 +1,152 @@
+/* 테마 색상 변수 (여기만 바꾸면 전체 색상이 바뀜) */
+:root {
+  --primary: #667eea;
+  --primary-dark: #764ba2;
+  --primary-light: #eef0fd;
+  --text: #2d3748;
+  --text-muted: #718096;
+  --positive: #38a169; /* 양수일 때 숫자 색 (초록) */
+  --negative: #e53e3e; /* 음수일 때 숫자 색 (빨강) */
+
+  /* 버튼 그림자 (보라색이 살짝 비치는 부드러운 그림자) */
+  --shadow-btn: 0 6px 16px rgba(102, 126, 234, 0.35);
+  --shadow-btn-hover: 0 10px 24px rgba(102, 126, 234, 0.5);
+}
+
+/* 브라우저 기본 여백 제거 및 크기 계산 방식 통일 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 페이지 전체: 보라색 그라데이션 배경 + 카드를 화면 정중앙에 배치 */
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Malgun Gothic", sans-serif;
+  color: var(--text);
+  /* 은은한 빛 번짐 2개 + 대각선 보라색 그라데이션 */
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.18), transparent 40%),
+    radial-gradient(circle at 80% 85%, rgba(255, 255, 255, 0.12), transparent 45%),
+    linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+}
+
+/* 카운터 카드: 넉넉한 여백, 큰 둥근 모서리, 깊은 그림자 */
+.counter {
+  width: 100%;
+  max-width: 380px;
+  padding: 44px 32px 40px;
+  background: #fff;
+  border-radius: 28px;
+  box-shadow:
+    0 30px 60px rgba(40, 20, 80, 0.25),
+    0 8px 20px rgba(40, 20, 80, 0.12);
+  text-align: center;
+}
+
+/* 상단 제목: 크고 진하게 해서 잘 보이도록 */
+.title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--text);
+}
+
+/* 큰 숫자 표시: 아주 크고 굵게 */
+.count {
+  margin: 20px 0 36px;
+  font-size: 7.5rem;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: var(--primary);
+  font-variant-numeric: tabular-nums; /* 자릿수가 바뀌어도 숫자 폭 고정 */
+  transition: color 0.2s; /* 색상이 부드럽게 바뀌도록 */
+}
+
+/* 양수일 때 초록색 */
+.count.positive {
+  color: var(--positive);
+}
+
+/* 음수일 때 빨간색 */
+.count.negative {
+  color: var(--negative);
+}
+
+/* 버튼 3개를 가로로 나란히 배치 */
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+/* 공통 버튼 스타일 (+, -): pill 형태 + 그라데이션 + 그림자 */
+.btn {
+  min-width: 76px;
+  height: 52px;
+  padding: 0 22px;
+  font-size: 1.6rem;
+  font-weight: 600;
+  line-height: 1;
+  border: none;
+  border-radius: 999px; /* 양 끝이 완전히 둥근 pill 모양 */
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: #fff;
+  box-shadow: var(--shadow-btn);
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s, filter 0.15s;
+}
+
+/* 호버: 살짝 떠오르고 그림자가 커짐 */
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-btn-hover);
+  filter: brightness(1.05);
+}
+
+/* 클릭: 다시 내려앉으며 눌리는 느낌 */
+.btn:active {
+  transform: translateY(0) scale(0.97);
+  box-shadow: var(--shadow-btn);
+}
+
+/* 키보드 이동 시 포커스 표시 */
+.btn:focus-visible {
+  outline: 3px solid var(--primary-light);
+  outline-offset: 3px;
+}
+
+/* 리셋 버튼: 연한 배경의 보조 버튼 */
+.btn-reset {
+  font-size: 1rem;
+  background: var(--primary-light);
+  color: var(--primary-dark);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.18);
+}
+
+.btn-reset:hover {
+  background: #e3e7fc;
+  box-shadow: 0 8px 18px rgba(102, 126, 234, 0.28);
+}
+
+/* 좁은 화면(휴대폰): 여백과 크기를 줄여 버튼이 한 줄에 들어가도록 */
+@media (max-width: 400px) {
+  .counter {
+    padding: 36px 20px 32px;
+  }
+
+  .count {
+    font-size: 6rem;
+  }
+
+  .btn {
+    min-width: 64px;
+    padding: 0 16px;
+  }
+}
